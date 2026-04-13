@@ -29,24 +29,22 @@ import {
 } from 'class-validator';
 
 export class CreateListingDto {
-  @IsNotEmpty({ message: 'Tiêu đề không được để trống' })
+  @IsNotEmpty({ message: 'Title need to be fiied'})
   @IsString()
-  @MinLength(10, { message: 'Tiêu đề phải dài ít nhất 10 ký tự' })
   title: string;
-  @IsNotEmpty({ message: 'Mô tả không được để trống' })
+  @IsNotEmpty({ message: 'Description have to be fiied' })
   @IsString()
   description: string;
 
-  @IsNotEmpty({ message: 'Vui lòng chọn thành phố' }) @IsString() city: string; // Chỉ lưu: "Vung Tau", "Hanoi"...
+  @IsNotEmpty({ message: 'Please choose the city' }) @IsString() city: string; // Chỉ lưu: "Vung Tau", "Hanoi"...
 
-  @IsNotEmpty({ message: 'Vui lòng chọn loại nhà' }) @IsString() typeId: string; // <--- MỚI: Nhận 'A01', 'B02'...
+  @IsNotEmpty({ message: 'Please choose the type' }) @IsString() typeId: string; // <--- MỚI: Nhận 'A01', 'B02'...
 
   @IsNotEmpty()
-  @Min(100, { message: 'Giá phòng tối thiểu là 100đ' })
   pricePerNight: number | string;
 
   @IsNotEmpty()
-  @Min(1, { message: 'Số khách tối thiểu là 1' })
+  @Min(1, { message: 'At least 1 guest' })
   maxGuests: number | string;
 
   @IsArray() amenities: string[];
